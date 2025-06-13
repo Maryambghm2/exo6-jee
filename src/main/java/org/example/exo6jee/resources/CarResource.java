@@ -53,6 +53,7 @@ public class CarResource {
         return carService.update(id, carToUpdate.getBrand(), carToUpdate.getCreatedDate(), carToUpdate.getColor());
     }
 
+    // http://localhost:8080/exo6_jee_war_exploded/api/cars/delete/:id
     @DELETE
     @Path("/delete/{id}")
     public String delete(@PathParam("id") int id) {
