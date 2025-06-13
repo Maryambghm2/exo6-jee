@@ -3,6 +3,6 @@ package org.example.exo6jee;
 import jakarta.ws.rs.ApplicationPath;
 import jakarta.ws.rs.core.Application;
 
-@ApplicationPath("/test")
-public class Test extends Application {
+@ApplicationPath("/api")
+public class HelloApplication extends Application {
 }

@@ -5,10 +5,12 @@ import java.time.LocalDate;
 public class Car {
     private int id;
     private String brand;
-    private LocalDate createdDate;
+    private int createdDate;
     private String color;
 
-    public Car(int id, String brand, LocalDate createdDate, String color) {
+    public Car() {}
+
+    public Car(int id, String brand, int createdDate, String color) {
         this.id = id;
         this.brand = brand;
         this.createdDate = createdDate;
@@ -39,11 +41,11 @@ public class Car {
         this.color = color;
     }
 
-    public LocalDate getCreatedDate() {
+    public int getCreatedDate() {
         return createdDate;
     }
 
-    public void setCreatedDate(LocalDate createdDate) {
+    public void setCreatedDate(int createdDate) {
         this.createdDate = createdDate;
     }
 }

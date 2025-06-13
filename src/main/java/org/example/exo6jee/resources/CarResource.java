@@ -18,15 +18,15 @@ public class CarResource {
         this.carService = carService;
     }
 
-
+// http://localhost:8080/exo6_jee_war_exploded/api/cars
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public List<Car> getAll() {
-        System.out.println("Listes voitures");
         return carService.getCars();
 
     }
 
+    // http://localhost:8080/exo6_jee_war_exploded/api/cars/:id
     @GET
     @Path("/{id}")
     @Produces(MediaType.APPLICATION_JSON)
@@ -34,12 +34,30 @@ public class CarResource {
         return carService.getById(id);
     }
 
+    // http://localhost:8080/exo6_jee_war_exploded/api/cars/new
     @POST
     @Path("/new")
     @Produces(MediaType.APPLICATION_JSON)
-    public Car createCar(String brand, LocalDate createDate, String color) {
-        return carService.create(brand, createDate, color);
+    @Consumes(MediaType.APPLICATION_JSON)
+    public Car createCar(Car car) {
+        return carService.create(car.getBrand(), car.getCreatedDate(), car.getColor());
     }
 
+
+// http://localhost:8080/exo6_jee_war_exploded/api/cars/update/:id
+    @PUT
+    @Path("/update/{id}")
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.APPLICATION_JSON)
+    public Car updateCar(@PathParam("id") int id, Car carToUpdate) {
+        return carService.update(id, carToUpdate.getBrand(), carToUpdate.getCreatedDate(), carToUpdate.getColor());
+    }
+
+    @DELETE
+    @Path("/delete/{id}")
+    public String delete(@PathParam("id") int id) {
+        carService.delete(id);
+        return ("Voiture avec l'id "+ id + " supprimé .");
+    }
 
 }
